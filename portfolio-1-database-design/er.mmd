@@ -1,0 +1,49 @@
+erDiagram
+    CUSTOMER ||--o{ ACCOUNT : owns
+    CUSTOMER ||--o{ BENEFICIARY : saves
+    ACCOUNT ||--o{ SAVINGS_GOAL : has
+    ACCOUNT ||--o{ TRANSACTION : "sends from"
+    ACCOUNT ||--o{ TRANSACTION : "receives to"
+    BENEFICIARY |o--o{ TRANSACTION : "paid to"
+    CUSTOMER {
+        int customer_id PK
+        string full_name
+        string email UK
+        string phone UK
+        date date_of_birth
+    }
+    ACCOUNT {
+        int account_id PK
+        int customer_id FK
+        string account_number UK
+        string type "WALLET or SAVINGS"
+        string currency "NGN or USD"
+        decimal balance
+    }
+    SAVINGS_GOAL {
+        int goal_id PK
+        int account_id FK
+        string name
+        decimal target_amount
+        date target_date
+        string status
+    }
+    BENEFICIARY {
+        int beneficiary_id PK
+        int customer_id FK
+        string bank_name
+        string account_number
+        string account_name
+    }
+    TRANSACTION {
+        int txn_id PK
+        string idempotency_key UK
+        string type "DEPOSIT, WITHDRAWAL, TRANSFER"
+        int from_account_id FK
+        int to_account_id FK
+        int beneficiary_id FK
+        decimal amount
+        string currency "must match both accounts"
+        string status
+        timestamp created_at
+    }
