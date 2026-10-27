@@ -1,0 +1,19 @@
+                                                            QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=26585.22..31518.11 rows=166095 width=57) (actual time=81.241..113.569 rows=40.00 loops=1)
+   Group Key: (date_trunc('month'::text, created_at)), type
+   Buffers: shared hit=2369, temp read=808 written=811
+   ->  Sort  (cost=26585.22..27073.51 rows=195317 width=23) (actual time=80.421..93.347 rows=195067.00 loops=1)
+         Sort Key: (date_trunc('month'::text, created_at)), type
+         Sort Method: external merge  Disk: 6464kB
+         Buffers: shared hit=2369, temp read=808 written=811
+         ->  Seq Scan on transaction  (cost=0.00..5413.79 rows=195317 width=23) (actual time=0.008..31.231 rows=195067.00 loops=1)
+               Filter: ((status)::text = 'COMPLETED'::text)
+               Rows Removed by Filter: 9933
+               Buffers: shared hit=2363
+ Planning:
+   Buffers: shared hit=209
+ Planning Time: 0.356 ms
+ Execution Time: 119.017 ms
+(15 rows)
+

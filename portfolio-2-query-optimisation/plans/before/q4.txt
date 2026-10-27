@@ -1,0 +1,25 @@
+                                                                QUERY PLAN                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=372.47..372.49 rows=10 width=54) (actual time=1.724..1.726 rows=10.00 loops=1)
+   Buffers: shared hit=151
+   ->  Sort  (cost=372.47..377.47 rows=2000 width=54) (actual time=1.724..1.725 rows=10.00 loops=1)
+         Sort Key: (round((('100'::numeric * a.balance) / g.target_amount), 1)) DESC
+         Sort Method: top-N heapsort  Memory: 26kB
+         Buffers: shared hit=151
+         ->  Hash Join  (cost=67.00..329.25 rows=2000 width=54) (actual time=0.460..1.483 rows=2000.00 loops=1)
+               Hash Cond: (a.account_id = g.account_id)
+               Buffers: shared hit=148
+               ->  Seq Scan on account a  (cost=0.00..201.00 rows=7000 width=10) (actual time=0.076..0.311 rows=7000.00 loops=1)
+                     Buffers: shared hit=131
+               ->  Hash  (cost=42.00..42.00 rows=2000 width=20) (actual time=0.370..0.371 rows=2000.00 loops=1)
+                     Buckets: 2048  Batches: 1  Memory Usage: 123kB
+                     Buffers: shared hit=17
+                     ->  Seq Scan on savings_goal g  (cost=0.00..42.00 rows=2000 width=20) (actual time=0.006..0.206 rows=2000.00 loops=1)
+                           Filter: ((status)::text = 'ACTIVE'::text)
+                           Buffers: shared hit=17
+ Planning:
+   Buffers: shared hit=277
+ Planning Time: 0.521 ms
+ Execution Time: 1.769 ms
+(21 rows)
+
