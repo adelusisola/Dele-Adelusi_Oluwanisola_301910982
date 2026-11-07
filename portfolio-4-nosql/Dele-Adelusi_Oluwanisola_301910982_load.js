@@ -1,5 +1,5 @@
 // Creates the vant_nosql database with validation, loads the KYC documents (generated: PostgreSQL has no KYC table) and creates the activity collection.
-// The activity documents come from PostgreSQL through export_activity.sql and mongoimport (see load.sh).
+// The activity documents come from PostgreSQL through Dele-Adelusi_Oluwanisola_301910982_export_activity.sql and mongoimport (see Dele-Adelusi_Oluwanisola_301910982_load.sh).
 const d = db.getSiblingDB('vant_nosql');
 d.dropDatabase();
 
