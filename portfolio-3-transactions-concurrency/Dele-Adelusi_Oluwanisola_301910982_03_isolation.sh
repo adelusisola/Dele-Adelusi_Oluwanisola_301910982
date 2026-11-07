@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Session A reads Adaeze's balance twice. Session B deposits 500 between the two reads.
-source "$(dirname "$0")/lib.sh"
+source "$(dirname "$0")/Dele-Adelusi_Oluwanisola_301910982_lib.sh"
 for level in "READ COMMITTED" "REPEATABLE READ"; do
   q -c "select reset_demo()" > /dev/null
   echo "--- session A runs at $level"

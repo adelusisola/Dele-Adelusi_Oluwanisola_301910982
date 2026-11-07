@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Two withdrawals of 800 from an account holding 1000 at the same time. Only one should succeed.
-source "$(dirname "$0")/lib.sh"
+source "$(dirname "$0")/Dele-Adelusi_Oluwanisola_301910982_lib.sh"
 run() {
   q -At -c "select 'session A: new balance ' || $1($ADAEZE, 800, 2)" | sed 's/^/  /' &
   ( sleep 0.3; q -At -c "select 'session B: new balance ' || $1($ADAEZE, 800, 1)" | sed 's/^/  /' ) &
