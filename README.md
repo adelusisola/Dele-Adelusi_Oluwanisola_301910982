@@ -20,6 +20,9 @@ A savings-first mobile bank for young Nigerian customers, based on the publicly 
 
 Each folder has its own README with the scripts, the results and the screenshots.
 
+## File naming
+All files follow the required naming convention, `Surname_Firstname_StudentID_DocumentType`, for example `Dele-Adelusi_Oluwanisola_301910982_schema.sql`. The only exceptions are the README.md files and the .gitignore files, which keep their standard names so that GitHub displays them.
+
 ## How to run
 Portfolios 1 to 3 use a local PostgreSQL (tested on version 18). Portfolios 4 and 5 use Docker.
 
