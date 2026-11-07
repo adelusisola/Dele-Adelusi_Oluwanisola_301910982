@@ -4,12 +4,12 @@ python3 -I - <<'PY'
 import re, statistics
 def times(phase):
     out = {}
-    for line in open(f"plans/{phase}/times.csv"):
+    for line in open(f"plans/{phase}/Dele-Adelusi_Oluwanisola_301910982_times.csv"):
         q, *v = line.strip().split(",")
         out[q] = [float(x) for x in v]
     return out
 def buffers(phase, q):
-    m = re.search(r"Buffers: (.*)", open(f"plans/{phase}/{q}.txt").read())
+    m = re.search(r"Buffers: (.*)", open(f"plans/{phase}/Dele-Adelusi_Oluwanisola_301910982_{q}.txt").read())
     return sum(int(n) for n in re.findall(r"(?:hit|read)=(\d+)", m.group(1))) if m else 0
 b, a = times("before"), times("after")
 fmt = lambda v: f"{statistics.median(v):.2f} ({min(v):.2f}-{max(v):.2f})"

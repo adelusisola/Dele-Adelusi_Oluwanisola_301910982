@@ -43,7 +43,7 @@ FROM (SELECT 1 + (hashtext(i || 'a')::bigint & 2147483647) % 5000 AS a,
              (hashtext(i || 'f')::bigint & 2147483647) AS h6
       FROM generate_series(1, 200000) i) x;
 
--- the stored balance is the sum of the completed transactions (the rule that invariants.sql checks)
+-- the stored balance is the sum of the completed transactions (the rule that Dele-Adelusi_Oluwanisola_301910982_invariants.sql checks)
 UPDATE account a SET balance = b.from_transactions FROM balance_check b WHERE b.account_id = a.account_id;
 
 ANALYZE;
