@@ -25,24 +25,24 @@ Portfolios 1 to 3 use a local PostgreSQL (tested on version 18). Portfolios 4 an
 
 **Portfolios 1 to 3, one command.** It creates the database if needed, rebuilds everything in the right order, runs the checks and stops if one fails (about 4 minutes). It also regenerates the Portfolio 2 plan files.
 ```bash
-./run_all.sh
+./Dele-Adelusi_Oluwanisola_301910982_run_all.sh
 ```
 
-**Portfolio 4** (needs the Portfolio 2 data, so run `./run_all.sh` first):
+**Portfolio 4** (needs the Portfolio 2 data, so run `./Dele-Adelusi_Oluwanisola_301910982_run_all.sh` first):
 ```bash
-docker compose up -d mongo
-portfolio-4-nosql/load.sh
-docker exec vant-mongo mongosh --quiet vant_nosql /work/queries.js
-portfolio-4-nosql/reconcile.sh
-docker compose down
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml up -d mongo
+portfolio-4-nosql/Dele-Adelusi_Oluwanisola_301910982_load.sh
+docker exec vant-mongo mongosh --quiet vant_nosql /work/Dele-Adelusi_Oluwanisola_301910982_queries.js
+portfolio-4-nosql/Dele-Adelusi_Oluwanisola_301910982_reconcile.sh
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml down
 ```
 
 **Portfolio 5:**
 ```bash
-docker compose --profile replication up -d pg-primary pg-replica
-portfolio-5-distributed-cloud/replication_demo.sh        # stops the primary at the end
-psql -d vant_personal -f portfolio-5-distributed-cloud/sharding.sql
-docker compose --profile replication down -v
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml --profile replication up -d pg-primary pg-replica
+portfolio-5-distributed-cloud/Dele-Adelusi_Oluwanisola_301910982_replication_demo.sh        # stops the primary at the end
+psql -d vant_personal -f portfolio-5-distributed-cloud/Dele-Adelusi_Oluwanisola_301910982_sharding.sql
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml --profile replication down -v
 ```
 
 ## References
