@@ -1,10 +1,10 @@
 -- Automated checks. Each one prints PASS or FAIL, and the script ends with an overall verdict.
--- Run it on an empty schema (after schema.sql). Everything it creates is rolled back at the end, and the id counters are reset to 1.
+-- Run it on an empty schema (after Dele-Adelusi_Oluwanisola_301910982_schema.sql). Everything it creates is rolled back at the end, and the id counters are reset to 1.
 -- It stops at once if the schema already holds data, so it can never delete real data.
 \set ON_ERROR_STOP on
 SET search_path TO vant;
 DO $$ BEGIN
-    IF EXISTS (SELECT 1 FROM customer) THEN RAISE EXCEPTION 'tests.sql needs an empty schema: run schema.sql first'; END IF;
+    IF EXISTS (SELECT 1 FROM customer) THEN RAISE EXCEPTION 'Dele-Adelusi_Oluwanisola_301910982_tests.sql needs an empty schema: run Dele-Adelusi_Oluwanisola_301910982_schema.sql first'; END IF;
 END $$;
 
 TRUNCATE customer, account, savings_goal, beneficiary, transaction RESTART IDENTITY CASCADE;
