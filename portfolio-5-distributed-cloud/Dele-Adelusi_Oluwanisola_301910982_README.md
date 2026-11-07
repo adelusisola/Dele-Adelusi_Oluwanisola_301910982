@@ -4,7 +4,7 @@ I built a replicated PostgreSQL pair in Docker and a hash-partitioned table, and
 
 ## 1. Replication, consistency and availability
 
-[replication_demo.sh](replication_demo.sh) runs a PostgreSQL primary and one streaming replica in Docker, with the Portfolio 1 schema and a demo account.
+[Dele-Adelusi_Oluwanisola_301910982_replication_demo.sh](Dele-Adelusi_Oluwanisola_301910982_replication_demo.sh) runs a PostgreSQL primary and one streaming replica in Docker, with the Portfolio 1 schema and a demo account.
 
 - **Replication works.** A deposit of 100 on the primary shows up on the replica, and the replica refuses writes (`cannot execute UPDATE in a read-only transaction`).
 - **Replication is asynchronous.** I set the replica to apply changes 3 seconds late. A read right after a write returned the old balance (1,100) while the primary showed 1,200. Four seconds later the replica caught up.
@@ -12,7 +12,7 @@ I built a replicated PostgreSQL pair in Docker and a hash-partitioned table, and
 
 ## 2. Sharding
 
-[sharding.sql](sharding.sql) splits the transactions into four partitions by a hash of `from_account_id`. The rows spread evenly, from 34,110 to 35,657 per partition. A query that names the account reads one partition, and a query that does not reads all four. This is partitioning on one server, the single-server form of sharding. In a real sharded system each partition would be on a different server.
+[Dele-Adelusi_Oluwanisola_301910982_sharding.sql](Dele-Adelusi_Oluwanisola_301910982_sharding.sql) splits the transactions into four partitions by a hash of `from_account_id`. The rows spread evenly, from 34,110 to 35,657 per partition. A query that names the account reads one partition, and a query that does not reads all four. This is partitioning on one server, the single-server form of sharding. In a real sharded system each partition would be on a different server.
 
 ## 3. Discussion
 
@@ -26,7 +26,7 @@ For Vant, balances and transfers would use the primary, with synchronous replica
 - **Recovery time (RTO).** The demo measured only the promotion, 0.3 seconds. A real RTO also includes the time to notice the primary has failed, often tens of seconds, and the time for clients to reconnect. I did not measure detection time.
 - **Reconnection.** Applications need an address that follows the primary, such as a DNS name, a proxy or a driver given several hosts. A transaction in flight when the primary failed has an unknown outcome, so the retry must use the idempotency key from Portfolio 3 or the customer could be charged twice.
 - **The old primary.** If it comes back it holds writes the new primary never saw. It must be fenced off and rebuilt before it rejoins.
-- **Synchronous replication is not a guarantee.** By default a synchronous commit waits for the replica to receive the change, not apply it, so a replica read can still be old. If the synchronous replica fails, the system must either block writes or fall back to asynchronous. Reads from a replica, a cache or the MongoDB copy also lag. So balances shown to customers should be read from the primary, and `invariants.sql` should still run regularly.
+- **Synchronous replication is not a guarantee.** By default a synchronous commit waits for the replica to receive the change, not apply it, so a replica read can still be old. If the synchronous replica fails, the system must either block writes or fall back to asynchronous. Reads from a replica, a cache or the MongoDB copy also lag. So balances shown to customers should be read from the primary, and `Dele-Adelusi_Oluwanisola_301910982_invariants.sql` should still run regularly.
 
 ## 4. Cloud deployment design (not deployed)
 
@@ -35,12 +35,12 @@ PostgreSQL would run on a managed service such as Amazon RDS, with a standby in 
 ## How to run
 
 ```bash
-docker compose --profile replication up -d pg-primary pg-replica
-./replication_demo.sh
-psql -d vant_personal -f sharding.sql
-docker compose --profile replication down -v
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml --profile replication up -d pg-primary pg-replica
+./Dele-Adelusi_Oluwanisola_301910982_replication_demo.sh
+psql -d vant_personal -f Dele-Adelusi_Oluwanisola_301910982_sharding.sql
+docker compose -f Dele-Adelusi_Oluwanisola_301910982_docker-compose.yml --profile replication down -v
 ```
 
-Run the compose commands from the repository root. The demo stops the primary at the end, and sharding.sql runs on the local database after Portfolio 2.
+Run the compose commands from the repository root. The demo stops the primary at the end, and Dele-Adelusi_Oluwanisola_301910982_sharding.sql runs on the local database after Portfolio 2.
 
-Screenshots: [replication, stale read and failover](screenshots/replication.png), [sharding](screenshots/sharding.png).
+Screenshots: [replication, stale read and failover](screenshots/Dele-Adelusi_Oluwanisola_301910982_replication.png), [sharding](screenshots/Dele-Adelusi_Oluwanisola_301910982_sharding.png).
