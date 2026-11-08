@@ -16,6 +16,12 @@ If one wide transaction row repeated the customer's name, email and account deta
 
 I did make one exception. account.balance could be worked out by adding up the transactions, but I store it so reads are fast. The cost is that it must change in the same database transaction as the transaction row (Portfolio 3). The view balance_check and [Dele-Adelusi_Oluwanisola_301910982_invariants.sql](Dele-Adelusi_Oluwanisola_301910982_invariants.sql) check that the two agree.
 
+## Storing money
+
+Money is stored as `NUMERIC(14,2)`, an exact decimal type, never a float. Many payment systems instead store the smallest unit (kobo) as an integer. Both avoid rounding errors, and I chose NUMERIC because it keeps amounts readable in queries and enforces two decimal places.
+
+Amounts are exact, so additions and subtractions never lose precision. Calculations such as interest, fees or currency conversion could produce more than two decimals, so a production system would also need a stated rounding rule and a way to handle the leftover kobo.
+
 ## Testing
 
 ```bash
