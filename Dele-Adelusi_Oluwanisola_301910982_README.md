@@ -1,7 +1,8 @@
 # MIT 8103 Advanced Database Systems: Individual Portfolio
 
-#**Student Name:** Oluwanisola Joshua Dele-Adelusi
-#**Student ID:** 301910982
+**Student Name:** Oluwanisola Joshua Dele-Adelusi
+
+**Student ID:** 301910982
 
 ## GitHub Repository:
 https://github.com/adelusisola/Dele-Adelusi_Oluwanisola_301910982
