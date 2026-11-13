@@ -1,6 +1,14 @@
 # MIT 8103 Advanced Database Systems: Individual Portfolio
 
-**Student:** Oluwanisola Dele-Adelusi, matric number 301910982
+**Student Name:** Oluwanisola Joshua Dele-Adelusi
+
+**Student ID:** 301910982
+
+## GitHub Repository:
+https://github.com/adelusisola/Dele-Adelusi_Oluwanisola_301910982
+This is a public repository, so can be opened by the assessor. There are SQL/NoSQL scripts,
+execution plans for queries, screenshots and READMEs for each portfolio. Everything is named
+appropriately.
 
 ## Selected case study: Vant Personal (simulated)
 A savings-first mobile bank for young Nigerian customers, based on the publicly described Vant app. It uses no real Vant schema, code or data.
