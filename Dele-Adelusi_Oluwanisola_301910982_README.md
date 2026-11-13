@@ -1,4 +1,9 @@
 # MIT 8103 Advanced Database Systems: Individual Portfolio
+## GitHub Repository:
+https://github.com/adelusisola/Dele-Adelusi_Oluwanisola_301910982
+This is a public repository, so can be opened by the assessor. There are SQL/NoSQL scripts,
+execution plans for queries, screenshots and READMEs for each portfolio. Everything is named
+appropriately.
 
 **Student:** Oluwanisola Dele-Adelusi, matric number 301910982
 
