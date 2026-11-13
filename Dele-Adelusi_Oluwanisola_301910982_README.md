@@ -10,13 +10,13 @@ A savings-first mobile bank for young Nigerian customers, based on the publicly 
 - **Key operations:** open an account, deposit, withdraw, transfer, fund a savings goal, and view an account statement.
 
 ## Portfolios
-| # | Activity | Marks | Folder |
-|---|---|---|---|
-| 1 | Database design and modelling | 7 | [portfolio-1-database-design](portfolio-1-database-design) |
-| 2 | Query processing and optimisation | 7 | [portfolio-2-query-optimisation](portfolio-2-query-optimisation) |
-| 3 | Transactions and concurrency | 7 | [portfolio-3-transactions-concurrency](portfolio-3-transactions-concurrency) |
-| 4 | NoSQL and advanced data models | 7 | [portfolio-4-nosql](portfolio-4-nosql) |
-| 5 | Distributed and cloud database | 6 | [portfolio-5-distributed-cloud](portfolio-5-distributed-cloud) |
+| # | Activity | Folder |
+|---|---|---|
+| 1 | Database design and modelling | [portfolio-1-database-design](portfolio-1-database-design) |
+| 2 | Query processing and optimisation | [portfolio-2-query-optimisation](portfolio-2-query-optimisation) |
+| 3 | Transactions and concurrency | [portfolio-3-transactions-concurrency](portfolio-3-transactions-concurrency) |
+| 4 | NoSQL and advanced data models | [portfolio-4-nosql](portfolio-4-nosql) |
+| 5 | Distributed and cloud database | [portfolio-5-distributed-cloud](portfolio-5-distributed-cloud) |
 
 Each folder has its own README with the scripts, the results and the screenshots.
 
